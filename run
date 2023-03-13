@@ -1,0 +1,9 @@
+#!/usr/bin/csh
+if (-e result.txt) then
+	rm -f result.txt
+endif
+foreach line ("`cat Sample.txt`")
+	#./bip_qnet1.py $line	# Please modify the program
+	./bip_qnet2_relax.py $line	# Please modify the program
+end
+./agg.py

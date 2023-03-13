@@ -1,0 +1,8 @@
+* Demand (12,48) doesn't have a flow from source to sink, but there is a flow which form a cycle
+(38,23) (14,19) (33,11) (5,44) (0,14) (46,49) (12,48) (14,9) (1,32) (10,2) (9,39) (17,24) (2,33) (1,14) (13,10) (24,9) (31,16) (35,8)
+
+* Set of demand [(47,15), (7,45), (43,0)]:
+The relaxation algorithm cannot converge (we may reduce the number of constraints after a number of specific loop
+
+* Set of demand: (68,47) (106,91) (78,51) (150,73) (83,37) (10,16) (130,36) (74,110) (109,30) (33,98) (133,47) (18,107) (20,70) (21,69) (135,106)
+The solution is negative, though extreme small (-2e-12). We may consider as 0

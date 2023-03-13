@@ -1,0 +1,21 @@
+#!/bin/bash
+## Read a file line-by-line using while loop ##
+file="surfnet_result_lmax_test.txt"
+fileAll="surfnet_result_lmax_all_test.txt"
+fileLine="surfnet_result_lmax_line_test.txt"
+runningTime="surfnet_result_lmax_runningtime.txt"
+> $file
+> $fileAll
+> $fileLine
+> $runningTime
+while IFS= read -r line || [ -n "$line" ]
+do
+	echo $line >> $fileLine
+	myvar="$(./entanglement_routing.py $line)"
+	echo $myvar >> $fileAll
+	total_path=$(echo $myvar | awk -F" " '{print $(NF-6)}')
+	echo $total_path >> $file
+	run_time=$(echo $myvar | awk -F" " '{print $(NF-1)}')
+	echo $run_time >> $runningTime
+	
+done < "Sample.txt"

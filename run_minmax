@@ -1,0 +1,17 @@
+#!/usr/bin/csh
+if (-e Sample_minmax.txt) then
+	rm -f Sample_minmax.txt
+endif
+if (-e length.txt) then
+	rm -f length.txt
+endif
+if (-e length_min.txt) then
+	rm -f length_min.txt
+endif
+foreach line ("`cat Sample.txt`")
+	./bip_qnet1_gen_input_minmax.py $line
+end
+foreach line ("`cat Sample_minmax.txt`")
+	./bip_qnet1_minmax_length.py $line	# Please modify the program
+end
+#./agg.py

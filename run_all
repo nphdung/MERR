@@ -1,0 +1,21 @@
+#!/usr/bin/csh
+if (-e log.txt) then
+	rm -f log.txt
+endif
+foreach test_case ("`cat list_test.txt`")
+	set test = `echo $test_case | sed -e 's/.$//'`
+	if (`echo $test | cut -c1-1` == '#') then
+		continue
+	endif
+#	echo $test
+	if (-e result.txt) then
+		rm -f result.txt
+	endif
+	foreach line ("`cat Sample.txt`")
+		#./bip_qnet1.py $line	# Please modify the program
+		./$test.py $line	# Please modify the program
+	end
+	./agg.py
+	mv result.txt result_$test.txt
+	mv aggregation.txt aggregation_$test.txt
+end
